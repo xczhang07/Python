@@ -1,7 +1,7 @@
 Python itertools functions study
 
 chain(): takes several iterators as arguments and return a single iterator
-eg: chain([1,2,3], ['A', 'B'])-->[1,2,3,'A','B']
+eg: chain([1,2,3], ['A', 'B'])->[1,2,3,'A','B']
 
 
 # import the itertools before using it
