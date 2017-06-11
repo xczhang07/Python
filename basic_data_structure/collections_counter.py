@@ -52,3 +52,37 @@ if __name__=="__main__":
 
 	print "\nUnion"
 	print c7 | c8
+
+	
+Output
+collections.Counter initialization
+
+Counter({'a': 1, 'c': 1, 'b': 1})
+Counter({'a': 1, 'c': 1, 'b': 1})
+Counter({'a': 1, 'c': 1, 'b': 1})
+
+ update function of collections.Counter 
+
+Counter({'c': 3, 'a': 2, 'e': 2, 'b': 1, 'd': 1})
+Counter({'a': 3, 'c': 3, 'e': 2, 'b': 1, 'd': 1, 'f': 1})
+a : 1
+b : 2
+c : 3
+d : 4
+e : 0
+Counter({'e': 3, 'm': 1, 'l': 1, 'r': 1, 't': 1, 'y': 1, 'x': 1, 'n': 0})
+['e', 'e', 'e', 'm', 'l', 'r', 't', 'y', 'x']
+c7:  Counter({'a': 1, 'c': 1, 'b': 1, 'e': 1, 'd': 1, 'g': 1, 'f': 1})
+c8:  Counter({'o': 2, 'g': 2, 'e': 1, 'l': 1})
+
+Combined counts:
+Counter({'g': 3, 'e': 2, 'o': 2, 'a': 1, 'c': 1, 'b': 1, 'd': 1, 'f': 1, 'l': 1})
+
+Subtraction:
+Counter({'a': 1, 'c': 1, 'b': 1, 'd': 1, 'f': 1})
+
+Intersection:
+Counter({'e': 1, 'g': 1})
+
+Union
+Counter({'g': 2, 'o': 2, 'a': 1, 'c': 1, 'b': 1, 'e': 1, 'd': 1, 'f': 1, 'l': 1})
