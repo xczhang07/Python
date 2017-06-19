@@ -6,6 +6,38 @@
 import requests   # the requests module needs to be imported first of all
 from requests.auth import HTTPBasicAuth
 
+def basic_requests():
+    # demo for making basic requests(different kinds of request: get, post, put, delete...) through python requests library.
+
+    # basic requests, we can access all the information we need from response object.
+    resp = requests.get('https://api.github.com/events')
+    resp = requests.post('http://httpbin.org/post', data = {'language':'python'})
+    resp = requests.put('http://httpbin.org/post', data={'language': 'python'})
+    resp = requests.delete('http://httpbin.org/delete')
+    resp = requests.head('http://httpbin.org/get')
+    resp = requests.options('http://httpbin.org/get')
+
+    # passing parameters in url, we can see the url was concatonated is: http://httpbin.org/get?FB=Web&F5=Network
+    resp = requests.get('http://httpbin.org/get', params={'F5':'Network', 'FB':'Web'})
+
+def response_content():
+    # text response
+    resp = requests.get("http://api.github.com/events")
+    # we can set the encoding value for the text, if u have some specific purpose using
+    resp.encoding = 'ISO-8859-1'
+    print resp.encoding
+    print resp.text
+
+    # access response content with the json format if it supports json encoding.
+    # if json decoding fails, it will raise an exception for this error.
+    print resp.json()
+
+def custom_headers():
+    url = "https://api.github.com/some/endpoint"
+    headers = {"X-Forwarding-For": "10.10.10.11"}
+    resp = requests.get(url, headers=headers)
+    print resp.headers
+
 def simple_get_request_101(url):
     """
     make an easy get request to the url with requests library.
@@ -32,6 +64,8 @@ def simple_get_request_101(url):
     # access text of response, we could use resp.text(if the webpage is based text),resp.content(binary form)
     # resp.json()(if the content encoded through json)
 
+    # make request with data
+
 def download_large_files(url):
     """
     this function demos how to download large file with requests library.
@@ -56,7 +90,6 @@ def download_large_files(url):
     resp.raise_for_status()
     with open("Night_Moon.jpg", "wb") as fd:
         for chunk in resp.iter_content(chunk_size=50000):
-            print ('received a chunk\n')
             fd.write(chunk)
 
 def simple_post_request_101(url, search_contents):
@@ -72,7 +105,9 @@ def simple_post_request_101(url, search_contents):
             fd.write(chunk)
 
 if __name__ == "__main__":
+    custom_headers()
+    response_content()
+    basic_requests()
     simple_get_request_101("https://github.com/xczhang07")
     download_large_files("http://images5.fanpop.com/image/photos/26600000/Beautiful-World-Art-sesshyswind-26642810-1280-1024.jpg")
     simple_post_request_101("https://en.wikipedia.org/w/index.php", "Hello World")
-
