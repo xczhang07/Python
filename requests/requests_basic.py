@@ -87,7 +87,7 @@ def download_large_files(url):
     #    Integer     True        chunk_size determines the number of bytes that should be read into memory
     #    Integer     False       all the data will be returned in a single chunk
     resp = requests.get(url, stream=True)
-    resp.raise_for_status()
+    resp.raise_for_status() # this function will raise up an exception if it meets up unsuccessfull HTTP response code, e.g. 40X and 50X
     with open("Night_Moon.jpg", "wb") as fd:
         for chunk in resp.iter_content(chunk_size=50000):
             fd.write(chunk)
