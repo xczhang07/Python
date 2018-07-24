@@ -28,26 +28,26 @@ process is running, then you can use python library to interact with memcached s
 from pymemcache.client import base
 
 def run_query_to_db(command):
-  """in this function, you are able to use python code to interact with your backend database(mysql, mongodb, etc...),
-  right now, we just return an simple result
-  """
-  print("running query on database, getting data from db...\n")
-  return 100
+  	"""in this function, you are able to use python code to interact with your backend database(mysql, mongodb, etc...),
+  	right now, we just return an simple result
+  	"""
+  	print("running query on database, getting data from db...\n")
+  	return 100
 
 
 def hit_cache_function(client, key):
-"""this function perform the logic mode of the hit or miss memcached"""
-  result = client.get(key)
-  if result is None:
-    result = run_wuery_to_db("select someting from table1 where user id equals sth")
-    client.set(key, result)
-  else:
-    return result
+	"""this function perform the logic mode of the hit or miss memcached"""
+ 	result = client.get(key)
+	if result is None:
+        	result = run_query_to_db("select someting from table1 where user id equals sth")
+        	client.set(key, result)
+  	else:
+    		return result
   
 
 if __name__ == "__main__":
-  client = base.Client(('localhost', 11211))  # this is the localhost testing code, we use localhost, in production code, you may need to provide real ip and password
-  client.set('memcached', 'Hello World')
-  hit_cache_function(client, "math_score")
+ 	client = base.Client(('localhost', 11211))  # this is the localhost testing code, we use localhost, in production code, you may need to provide real ip and password
+	client.set('memcached', 'Hello World')
+  	hit_cache_function(client, "math_score")
   
   
