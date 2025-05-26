@@ -1,0 +1,5 @@
+My testing environment is under MacOS
+1. Install the bazel with command: brew install bazel
+2. Create the source file, BUILD file, and MODULE.bazel file. (note: the bazel file should be created under hello_world_blzmode dir)
+3. Run the command (bazel build //hello_world:hello_world_app) under hello_world_blzmode directory, the binary file will be generated under: hello_world_blzmode/bazel-bin/hello_world/hello_world_app
+4. Then you can use the coverage api to play with the binary file.
