@@ -1,0 +1,19 @@
+# MODULE.bazel (inside bazel_python_hello_bzlmod/)
+
+module(
+    name = "hello_bazel_bzlmod",
+    version = "0.1.0",
+    compatibility_level = 1,
+)
+
+# Declare dependency on rules_python
+# Always check the latest recommended version and setup on rules_python GitHub!
+bazel_dep(name = "rules_python", version = "0.30.0")
+
+# Use the python extension to register toolchains
+# This fetches and registers a compatible Python interpreter for Bazel to use.
+# Ensure you have the specified Python version installed on your system.
+python = use_extension("@rules_python//python:extensions.bzl", "python")
+python.toolchain(python_version = "3.11")
+# If you want to explicitly enable auto-detection for a specific version:
+# python.toolchain(python_version = "3.11", auto_detect = True)
